@@ -231,7 +231,7 @@ while not gameExit:
     Player3Glove(PlayerList3)
     Player4Glove(PlayerList4)
     pygame.display.flip()
-    print("Hoi")
+    print("Hello")
 
 pygame.quit()
 quit()
