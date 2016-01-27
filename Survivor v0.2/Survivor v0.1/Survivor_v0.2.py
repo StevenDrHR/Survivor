@@ -111,6 +111,8 @@ def MainMenu(crash,Exit,ManualButton, QuitButton,StartButton):
     yl = (height * 0.8)
     while not crash:
         for event in pygame.event.get():
+            if event.type == MOUSEMOTION:
+                mousex, mousey = pygame.mouse.get_pos()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     crash = True
@@ -124,10 +126,6 @@ def MainMenu(crash,Exit,ManualButton, QuitButton,StartButton):
                 Quit(xq,yq,QuitButton)
                 Start(xs,ys,StartButton)
                 Manual(xm,ym,ManualButton)
-                for event in pygame.event.get():
-                    if event.type == MOUSEMOTION:
-                        mousex, mousey = pygame.mouse.get_pos()
-
                 #MOUSE HOOVER
                 if event.type == MOUSEMOTION and mousex > 550 and mousex < 950  and mousey > 60 and mousey < 210:
                         StartButton = StartButton2
