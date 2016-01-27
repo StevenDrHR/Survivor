@@ -26,6 +26,9 @@ Player1 = pygame.image.load("BoksHandschoen3.png")
 Player2 = pygame.image.load("BoksHandschoen.png")
 Player3 = pygame.image.load("BoksHandschoen4.png")
 Player4 = pygame.image.load("BoksHandschoen2.png")
+for event in pygame.event.get():
+    if event.type == MOUSEMOTION:
+        mousex, mousey = pygame.mouse.get_pos()
 
 #assets
 Wallpaper = pygame.image.load("WallpaperW.png")
@@ -97,7 +100,7 @@ def Player4Glove(l4):
     gameDisplay.blit(Player4,(x,y))
 
 #MAINMENU
-def MainMenu(crash,Exit,ManualButton, QuitButton,StartButton):
+def MainMenu(crash,Exit,ManualButton, QuitButton,StartButton,event,mousex,mousey):
     crash = False
     xs = (width * 0.5)
     ys = (height * 0.10)
@@ -126,6 +129,9 @@ def MainMenu(crash,Exit,ManualButton, QuitButton,StartButton):
                 Quit(xq,yq,QuitButton)
                 Start(xs,ys,StartButton)
                 Manual(xm,ym,ManualButton)
+                for event in pygame.event.get():
+                    if event.type == MOUSEMOTION:
+                        mousex, mousey = pygame.mouse.get_pos()
                 #MOUSE HOOVER
                 if event.type == MOUSEMOTION and mousex > 550 and mousex < 950  and mousey > 60 and mousey < 210:
                         StartButton = StartButton2
@@ -166,7 +172,8 @@ def BoardGame(l1,l2,l3,l4,Exit,crash):
                 Exit = True
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
-                    MainMenu(crash,Exit,ManualButton, QuitButton,StartButton)
+                    crash = False
+                    MainMenu(crash,Exit,ManualButton, QuitButton,StartButton,event,mousex,mousey)
                     
                 if event.key == pygame.K_1:
                     print (event)
@@ -197,7 +204,7 @@ def BoardGame(l1,l2,l3,l4,Exit,crash):
         pygame.display.update()
 
 # Aanroepencode
-MainMenu(crashed,gameExit,ManualButton, QuitButton,StartButton)
+MainMenu(crashed,gameExit,ManualButton, QuitButton,StartButton,event,mousex,mousey)
 pygame.quit()
 quit()
 
