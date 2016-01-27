@@ -1,4 +1,4 @@
-﻿print("Welcome sir")
+print("Welcome sir")
 import pygame
 import sys
 import os
@@ -231,6 +231,7 @@ while not gameExit:
     Player3Glove(PlayerList3)
     Player4Glove(PlayerList4)
     pygame.display.flip()
+    print("Hoi")
 
 pygame.quit()
 quit()
