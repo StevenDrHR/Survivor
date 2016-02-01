@@ -160,6 +160,10 @@ def BoardGame(l1,l2,l3,l4,Exit,crash):
     pygame.mixer.init()
     pygame.mixer.music.load("GameMusic.mp3",)
     pygame.mixer.music.play(-1)
+    P1 = True
+    P2 = False
+    P3 = False
+    P4 = False
     pygame.display.set_mode(size)
     getTicksLastFrame = 0;
     Exit = False
@@ -174,21 +178,30 @@ def BoardGame(l1,l2,l3,l4,Exit,crash):
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     MainMenu(crash,Exit,Manualbutton, Quitbutton,Startbutton,event,mousex,mousey)
-                    
-                if event.key == pygame.K_1:
+
+
+                if P1 == True and event.key == pygame.K_1:
                     if l1.Name == "Pos6":
                         Player1Class.Jet_Ri()
                     print (event)
                     l1 = l1.tail
-                if event.key == pygame.K_2:
+                    P1 = False
+                    P2 = True
+                elif P2 == True and event.key == pygame.K_2:
                     print (event)
                     l2 = l2.tail
-                if event.key == pygame.K_3:
+                    P2 = False
+                    P3 = True
+                elif P3 == True and event.key == pygame.K_3:
                     print (event)
                     l3 = l3.tail
-                if event.key == pygame.K_4:
+                    P3 = False
+                    P4 = True
+                elif P4 == True and event.key == pygame.K_4:
                     print (event)
                     l4 = l4.tail
+                    P4 = False
+                    P1 = True
                 if event.key == pygame.K_9 and (0.0 >= diceDisplay):
                     outcome = RollDice();
                     rolledDice = True;
