@@ -299,140 +299,145 @@ def BoardGame(l1,l2,l3,l4,Exit,crash):
                 if l2.Name == "Pos11":
                     l2 = PlayerPosList2
                 l2 = l2.tail
-            if l2.Name == "Pos10" or l2.Name == "Pos20" or l2.Name == "Pos30" or l2.Name == "Pos0":
-                    RK2 = random.randint(1,3)
+            if l2.Name == "Pos6" or l2.Name == "Pos16" or l2.Name == "Pos26" or l2.Name == "Pos36":
+                    RK2 = random.randint(1,18)
                     print(RK2)
                     if RK2 == 1:
-                        Player2Class.Terry_Crews(outcome)
+                        currentview = Player2Class.Terry_Crews(outcome)
                     elif RK2 == 2:
-                        Player2Class.Jason_Statham(outcome)
+                        currentview = Player2Class.Jason_Statham(outcome)
                     elif RK2 == 3:
-                        Player2Class.Wesley_Sniper(outcome)
+                        currentview = Player2Class.Wesley_Sniper(outcome)
                     elif RK2 == 4:
-                        Player2Class.Jet_Ri(outcome)
+                        currentview = Player2Class.Jet_Ri(outcome)
                     elif RK2 == 5:
-                        Player2Class.Steve_Seagal(outcome)
+                        currentview = Player2Class.Steve_Seagal(outcome)
                     elif RK2 == 6:
-                        Player2Class.Super_Merio(outcome)
+                        currentview = Player2Class.Super_Merio(outcome)
                     elif RK2 == 7:
-                        Player2Class.Vin_Dieser(outcome)
+                        currentview = Player2Class.Vin_Dieser(outcome)
                     elif RK2 == 8:
-                        Player2Class.Chack_Norris(outcome)
+                        currentview = Player2Class.Chack_Norris(outcome)
                     elif RK2 == 9:
-                        Player2Class.The_Roch(outcome)
+                        currentview = Player2Class.The_Roch(outcome)
                     elif RK2 == 10:
-                        Player2Class.James_Bend(outcome)
+                        currentview = Player2Class.James_Bend(outcome)
                     elif RK2 == 11:
-                        Player2Class.Ernold_Schwarzenegger(outcome)
+                        currentview = Player2Class.Ernold_Schwarzenegger(outcome)
                     elif RK2 == 12:
-                        Player2Class.Steve_Urkel(outcome)
+                        currentview = Player2Class.Steve_Urkel(outcome)
                     elif RK2 == 13:
-                        Player2Class.Dexter(outcome)
+                        currentview = Player2Class.Dexter(outcome)
                     elif RK2 == 14:
-                        Player2Class.Pariz_Hilten(outcome)
+                        currentview = Player2Class.Pariz_Hilten(outcome)
                     elif RK2 == 15:
-                        Player2Class.John_Cena(outcome)
+                        currentview = Player2Class.John_Cena(outcome)
                     elif RK2 == 16:
-                        Player2Class.Agua_Man(outcome)
+                        currentview = Player2Class.Agua_Man(outcome)
                     elif RK2 == 17:
-                        Player2Class.Jackie_Chen(outcome)
+                        currentview = Player2Class.Jackie_Chen(outcome)
                     elif RK2 == 18:
-                        Player2Class.Bruce_Hee(outcome)
+                        currentview = Player2Class.Bruce_Hee(outcome)
+
+                    currentCardView = 4.0
         elif(rolledDice) and P4 == True:
             for x in range(0,outcome):
                 if l3.Name == "Pos21":
                     l3 = PlayerPosList3
                 l3 = l3.tail
-            if l3.Name == "Pos1" or l3.Name == "Pos11" or l3.Name == "Pos21" or l3.Name == "Pos31" :
-                    #Player3Class.Jet_Ri(outcome)
+            if l3.Name == "Pos6" or l3.Name == "Pos16" or l3.Name == "Pos26" or l3.Name == "Pos36":
                     RK3 = random.randint(1,18)
                     print(RK3)
                     if RK3 == 1:
-                        Player3Class.Terry_Crews(outcome)
+                        currentview = Player3Class.Terry_Crews(outcome)
                     elif RK3 == 2:
-                        Player3Class.Jason_Statham(outcome)
+                        currentview = Player3Class.Jason_Statham(outcome)
                     elif RK3 == 3:
-                        Player3Class.Wesley_Sniper(outcome)
+                        currentview = Player3Class.Wesley_Sniper(outcome)
                     elif RK3 == 4:
-                        Player3Class.Jet_Ri(outcome)
+                        currentview = Player3Class.Jet_Ri(outcome)
                     elif RK3 == 5:
-                        Player3Class.Steve_Seagal(outcome)
+                        currentview = Player3Class.Steve_Seagal(outcome)
                     elif RK3 == 6:
-                        Player3Class.Super_Merio(outcome)
+                        currentview = Player3Class.Super_Merio(outcome)
                     elif RK3 == 7:
-                        Player3Class.Vin_Dieser(outcome)
+                        currentview = Player3Class.Vin_Dieser(outcome)
                     elif RK3 == 8:
-                        Player3Class.Chack_Norris(outcome)
+                        currentview = Player3Class.Chack_Norris(outcome)
                     elif RK3 == 9:
-                        Player3Class.The_Roch(outcome)
+                        currentview = Player3Class.The_Roch(outcome)
                     elif RK3 == 10:
-                        Player3Class.James_Bend(outcome)
+                        currentview = Player3Class.James_Bend(outcome)
                     elif RK3 == 11:
-                        Player3Class.Ernold_Schwarzenegger(outcome)
+                        currentview = Player3Class.Ernold_Schwarzenegger(outcome)
                     elif RK3 == 12:
-                        Player3Class.Steve_Urkel(outcome)
+                        currentview = Player3Class.Steve_Urkel(outcome)
                     elif RK3 == 13:
-                        Player3Class.Dexter(outcome)
+                        currentview = Player3Class.Dexter(outcome)
                     elif RK3 == 14:
-                        Player3Class.Pariz_Hilten(outcome)
+                        currentview = Player3Class.Pariz_Hilten(outcome)
                     elif RK3 == 15:
-                        Player3Class.John_Cena(outcome)
+                        currentview = Player3Class.John_Cena(outcome)
                     elif RK3 == 16:
-                        Player3Class.Agua_Man(outcome)
+                        currentview = Player3Class.Agua_Man(outcome)
                     elif RK3 == 17:
-                        Player3Class.Jackie_Chen(outcome)
+                        currentview = Player3Class.Jackie_Chen(outcome)
                     elif RK3 == 18:
-                        Player3Class.Bruce_Hee(outcome)
+                        currentview = Player3Class.Bruce_Hee(outcome)
+
+                    currentCardView = 4.0
         elif(rolledDice) and P1 == True:
             for x in range(0,outcome):
                 if l4.Name == "Pos31":
                     l4 = PlayerPosList4
                 l4 = l4.tail
-            if l4.Name == "Pos10" or l4.Name == "Pos20" or l4.Name == "Pos30" or l4.Name == "Pos40" :
+            if l4.Name == "Pos6" or l4.Name == "Pos16" or l4.Name == "Pos26" or l4.Name == "Pos36":
                     RK4 = random.randint(1,18)
                     print(RK4)
                     if RK4 == 1:
-                        Player4Class.Terry_Crews(outcome)
+                        currentview = Player4Class.Terry_Crews(outcome)
                     elif RK4 == 2:
-                        Player4Class.Jason_Statham(outcome)
+                        currentview = Player4Class.Jason_Statham(outcome)
                     elif RK4 == 3:
-                        Player4Class.Wesley_Sniper(outcome)
+                        currentview = Player4Class.Wesley_Sniper(outcome)
                     elif RK4 == 4:
-                        Player4Class.Jet_Ri(outcome)
+                        currentview = Player4Class.Jet_Ri(outcome)
                     elif RK4 == 5:
-                        Player4Class.Steve_Seagal(outcome)
+                        currentview = Player4Class.Steve_Seagal(outcome)
                     elif RK4 == 6:
-                        Player4Class.Super_Merio(outcome)
+                        currentview = Player4Class.Super_Merio(outcome)
                     elif RK4 == 7:
-                        Player4Class.Vin_Dieser(outcome)
+                        currentview = Player4Class.Vin_Dieser(outcome)
                     elif RK4 == 8:
-                        Player4Class.Chack_Norris(outcome)
+                        currentview = Player4Class.Chack_Norris(outcome)
                     elif RK4 == 9:
-                        Player4Class.The_Roch(outcome)
+                        currentview = Player4Class.The_Roch(outcome)
                     elif RK4 == 10:
-                        Player4Class.James_Bend(outcome)
+                        currentview = Player4Class.James_Bend(outcome)
                     elif RK4 == 11:
-                        Player4Class.Ernold_Schwarzenegger(outcome)
+                        currentview = Player4Class.Ernold_Schwarzenegger(outcome)
                     elif RK4 == 12:
-                        Player4Class.Steve_Urkel(outcome)
+                        currentview = Player4Class.Steve_Urkel(outcome)
                     elif RK4 == 13:
-                        Player4Class.Dexter(outcome)
+                        currentview = Player4Class.Dexter(outcome)
                     elif RK4 == 14:
-                        Player4Class.Pariz_Hilten(outcome)
+                        currentview = Player4Class.Pariz_Hilten(outcome)
                     elif RK4 == 15:
-                        Player4Class.John_Cena(outcome)
+                        currentview = Player4Class.John_Cena(outcome)
                     elif RK4 == 16:
-                        Player4Class.Agua_Man(outcome)
+                        currentview = Player4Class.Agua_Man(outcome)
                     elif RK4 == 17:
-                        Player4Class.Jackie_Chen(outcome)
+                        currentview = Player4Class.Jackie_Chen(outcome)
                     elif RK4 == 18:
-                        Player4Class.Bruce_Hee(outcome)
-        #if l2.Name == "Pos11":
-        #    l2 = PlayerPosList2
-        #if l3.Name == "Pos21":
-        #    l3 = PlayerPosList3
-        #if l4.Name == "Pos31":
-        #    l4 = PlayerPosList4
+                        currentview = Player1Class.Bruce_Hee(outcome)
+
+                    currentCardView = 4.0
+        if l2.Name == "Pos11":
+            l2 = PlayerPosList2
+        if l3.Name == "Pos21":
+            l3 = PlayerPosList3
+        if l4.Name == "Pos31":
+            l4 = PlayerPosList4
         gameDisplay.fill(blue)
         CornerTile(0,0)
         Player1Glove(l1)
@@ -780,6 +785,7 @@ class Player_2:
             Player_2.Levenspunten -= 25
         elif Dice == 4:
             Player_2.Levenspunten -= 20
+        return K4
     def Jason_Statham(Dice):
         if Dice == 1: 
             Player_2.Levenspunten -= 15
@@ -793,6 +799,7 @@ class Player_2:
             Player_2.Levenspunten -= 23
         elif Dice == 6:
             Player_2.Levenspunten -= 26
+        return K15
     def Wesley_Sniper(Dice):
         if Dice == 1:
             Player_2.Levenspunten -= 10
@@ -802,6 +809,7 @@ class Player_2:
             Player_2.Levenspunten -= 14
         elif Dice == 4:
             Player_2.Levenspunten -= 16
+        return K14
     def Jet_Ri(Dice):
         if Dice == 1: 
             Player_2.Levenspunten -= 10
@@ -815,6 +823,7 @@ class Player_2:
             Player_2.Levenspunten -= 14
         elif Dice == 6:
             Player_2.Levenspunten -= 23
+        return K11
     def Steve_Seagal(Dice):
         if Dice == 1: 
             Player_2.Levenspunten -= 10
@@ -828,6 +837,7 @@ class Player_2:
             Player_2.Levenspunten -= 25
         elif Dice == 6:
             Player_2.Levenspunten -= 20
+        return K9
     def Super_Merio(Dice):
         if Dice == 1 or Dice == 2:
             Player_2.Levenspunten -= 10
@@ -835,6 +845,7 @@ class Player_2:
             Player_2.Levenspunten -= 30
         elif Dice == 5 or Dice == 6:
             Player_2.Levenspunten -= 15
+        return K10
     def Vin_Dieser(Dice):
         if Dice == 1 or Dice == 5:
             Player_2.Levenspunten -= 15
@@ -844,6 +855,7 @@ class Player_2:
             Player_2.Levenspunten -= 30
         elif Dice == 6:
             Player_2.Levenspunten -= 15
+        return K13
     def Chack_Norris(Dice):
         if Dice == 1: 
             Player_2.Levenspunten -= 15
@@ -857,6 +869,7 @@ class Player_2:
             Player_2.Levenspunten -= 29
         elif Dice == 6:
             Player_2.Levenspunten -= 30
+        return K18
     def The_Roch(Dice):
         if Dice == 1: 
             Player_2.Levenspunten -= 13
@@ -870,6 +883,7 @@ class Player_2:
             Player_2.Levenspunten -= 10
         elif Dice == 6:
             Player_2.Levenspunten -= 7
+        return K12
     def James_Bend(Dice):
         if Dice == 1 or Dice == 6:
             Player_2.Levenspunten -= 25
@@ -879,6 +893,7 @@ class Player_2:
             Player_2.Levenspunten -= 7
         elif Dice == 5:
             Player_2.Levenspunten -= 20
+        return K16
     def Ernold_Schwarzenegger(Dice):
         if Dice == 1 or Dice == 6:
             Player_2.Levenspunten -= 10
@@ -888,6 +903,7 @@ class Player_2:
             Player_2.Levenspunten -= 25
         elif Dice == 4:
             Player_2.Levenspunten -= 20
+        return K8
     def Steve_Urkel(Dice):
         if Dice == 1: 
             Player_2.Levenspunten -= 10
@@ -901,6 +917,7 @@ class Player_2:
             Player_2.Levenspunten -= 15
         elif Dice == 6:
             Player_2.Levenspunten -= 8
+        return K7
     def Dexter(Dice):
         if Dice == 1 or Dice == 6: 
             Player_2.Levenspunten -= 9
@@ -912,6 +929,7 @@ class Player_2:
             Player_2.Levenspunten -= 15
         elif Dice == 5:
             Player_2.Levenspunten -= 13
+        return K6
     def Pariz_Hilten(Dice):
         if Dice == 1: 
             Player_2.Levenspunten -= 12
@@ -925,6 +943,7 @@ class Player_2:
             Player_2.Levenspunten -= 13
         elif Dice == 6:
             Player_2.Levenspunten -= 9
+        return K17
     def John_Cena(Dice):
         if Dice == 1: 
             Player_2.Levenspunten -= 10
@@ -938,6 +957,7 @@ class Player_2:
             Player_2.Levenspunten -= 8
         elif Dice == 6:
             Player_2.Levenspunten -= 11
+        return K1
     def Agua_Man(Dice):
         if Dice == 1: 
             Player_2.Levenspunten -= 12
@@ -949,6 +969,7 @@ class Player_2:
             Player_2.Levenspunten -= 7
         elif Dice == 6:
             Player_2.Levenspunten -= 13
+        return K2
     def Jackie_Chen(Dice):
         if Dice == 1: 
             Player_2.Levenspunten -= 12
@@ -962,6 +983,7 @@ class Player_2:
             Player_2.Levenspunten -= 10
         elif Dice == 6:
             Player_2.Levenspunten -= 25
+        return K3
     def Bruce_Hee(Dice):
         if Dice == 1: 
             Player_2.Levenspunten -= 20
@@ -975,6 +997,7 @@ class Player_2:
             Player_2.Levenspunten -= 8
         elif Dice == 6:
             Player_2.Levenspunten -= 26
+        return K5
 
 
 class Player_3:
@@ -990,6 +1013,7 @@ class Player_3:
             Player_3.Levenspunten -= 25
         elif Dice == 4:
             Player_3.Levenspunten -= 20
+        return K4
     def Jason_Statham(Dice):
         if Dice == 1: 
             Player_3.Levenspunten -= 15
@@ -1003,6 +1027,7 @@ class Player_3:
             Player_3.Levenspunten -= 23
         elif Dice == 6:
             Player_3.Levenspunten -= 26
+        return K15
     def Wesley_Sniper(Dice):
         if Dice == 1:
             Player_3.Levenspunten -= 10
@@ -1012,6 +1037,7 @@ class Player_3:
             Player_3.Levenspunten -= 14
         elif Dice == 4:
             Player_3.Levenspunten -= 16
+        return K14
     def Jet_Ri(Dice):
         if Dice == 1: 
             Player_3.Levenspunten -= 10
@@ -1025,6 +1051,7 @@ class Player_3:
             Player_3.Levenspunten -= 14
         elif Dice == 6:
             Player_3.Levenspunten -= 23
+        return K11
     def Steve_Seagal(Dice):
         if Dice == 1: 
             Player_3.Levenspunten -= 10
@@ -1038,6 +1065,7 @@ class Player_3:
             Player_3.Levenspunten -= 25
         elif Dice == 6:
             Player_3.Levenspunten -= 20
+        return K9
     def Super_Merio(Dice):
         if Dice == 1 or Dice == 2:
             Player_3.Levenspunten -= 10
@@ -1045,6 +1073,7 @@ class Player_3:
             Player_3.Levenspunten -= 30
         elif Dice == 5 or Dice == 6:
             Player_3.Levenspunten -= 15
+        return K10
     def Vin_Dieser(Dice):
         if Dice == 1 or Dice == 5:
             Player_3.Levenspunten -= 15
@@ -1054,6 +1083,7 @@ class Player_3:
             Player_3.Levenspunten -= 30
         elif Dice == 6:
             Player_3.Levenspunten -= 15
+        return K13
     def Chack_Norris(Dice):
         if Dice == 1: 
             Player_3.Levenspunten -= 15
@@ -1067,6 +1097,7 @@ class Player_3:
             Player_3.Levenspunten -= 29
         elif Dice == 6:
             Player_3.Levenspunten -= 30
+        return K18
     def The_Roch(Dice):
         if Dice == 1: 
             Player_3.Levenspunten -= 13
@@ -1080,6 +1111,7 @@ class Player_3:
             Player_3.Levenspunten -= 10
         elif Dice == 6:
             Player_3.Levenspunten -= 7
+        return K12
     def James_Bend(Dice):
         if Dice == 1 or Dice == 6:
             Player_3.Levenspunten -= 25
@@ -1089,6 +1121,7 @@ class Player_3:
             Player_3.Levenspunten -= 7
         elif Dice == 5:
             Player_3.Levenspunten -= 20
+        return K16
     def Ernold_Schwarzenegger(Dice):
         if Dice == 1 or Dice == 6:
             Player_3.Levenspunten -= 10
@@ -1098,6 +1131,7 @@ class Player_3:
             Player_3.Levenspunten -= 25
         elif Dice == 4:
             Player_3.Levenspunten -= 20
+        return K8
     def Steve_Urkel(Dice):
         if Dice == 1: 
             Player_3.Levenspunten -= 10
@@ -1111,6 +1145,7 @@ class Player_3:
             Player_3.Levenspunten -= 15
         elif Dice == 6:
             Player_3.Levenspunten -= 8
+        return K7
     def Dexter(Dice):
         if Dice == 1 or Dice == 6: 
             Player_3.Levenspunten -= 9
@@ -1122,6 +1157,7 @@ class Player_3:
             Player_3.Levenspunten -= 15
         elif Dice == 5:
             Player_3.Levenspunten -= 13
+        return K6
     def Pariz_Hilten(Dice):
         if Dice == 1: 
             Player_3.Levenspunten -= 12
@@ -1135,6 +1171,7 @@ class Player_3:
             Player_3.Levenspunten -= 13
         elif Dice == 6:
             Player_3.Levenspunten -= 9
+        return K17
     def John_Cena(Dice):
         if Dice == 1: 
             Player_3.Levenspunten -= 10
@@ -1148,6 +1185,7 @@ class Player_3:
             Player_3.Levenspunten -= 8
         elif Dice == 6:
             Player_3.Levenspunten -= 11
+        return K1
     def Agua_Man(Dice):
         if Dice == 1: 
             Player_3.Levenspunten -= 12
@@ -1159,6 +1197,7 @@ class Player_3:
             Player_3.Levenspunten -= 7
         elif Dice == 6:
             Player_3.Levenspunten -= 13
+        return K2
     def Jackie_Chen(Dice):
         if Dice == 1: 
             Player_3.Levenspunten -= 12
@@ -1172,6 +1211,7 @@ class Player_3:
             Player_3.Levenspunten -= 10
         elif Dice == 6:
             Player_3.Levenspunten -= 25
+        return K3
     def Bruce_Hee(Dice):
         if Dice == 1: 
             Player_3.Levenspunten -= 20
@@ -1185,7 +1225,8 @@ class Player_3:
             Player_3.Levenspunten -= 8
         elif Dice == 6:
             Player_3.Levenspunten -= 26
-
+        return K5
+       
 
 class Player_4:
     def __init__(self,Name,Levenspunten):
@@ -1200,6 +1241,7 @@ class Player_4:
             Player_4.Levenspunten -= 25
         elif Dice == 4:
             Player_4.Levenspunten -= 20
+        return K4
     def Jason_Statham(Dice):
         if Dice == 1: 
             Player_4.Levenspunten -= 15
@@ -1213,6 +1255,7 @@ class Player_4:
             Player_4.Levenspunten -= 23
         elif Dice == 6:
             Player_4.Levenspunten -= 26
+        return K15
     def Wesley_Sniper(Dice):
         if Dice == 1:
             Player_4.Levenspunten -= 10
@@ -1222,6 +1265,7 @@ class Player_4:
             Player_4.Levenspunten -= 14
         elif Dice == 4:
             Player_4.Levenspunten -= 16
+        return K11
     def Jet_Ri(Dice):
         if Dice == 1: 
             Player_4.Levenspunten -= 10
@@ -1248,6 +1292,7 @@ class Player_4:
             Player_4.Levenspunten -= 25
         elif Dice == 6:
             Player_4.Levenspunten -= 20
+        return K9
     def Super_Merio(Dice):
         if Dice == 1 or Dice == 2:
             Player_4.Levenspunten -= 10
@@ -1255,6 +1300,7 @@ class Player_4:
             Player_4.Levenspunten -= 30
         elif Dice == 5 or Dice == 6:
             Player_4.Levenspunten -= 15
+        return K10
     def Vin_Dieser(Dice):
         if Dice == 1 or Dice == 5:
             Player_4.Levenspunten -= 15
@@ -1264,6 +1310,7 @@ class Player_4:
             Player_4.Levenspunten -= 30
         elif Dice == 6:
             Player_4.Levenspunten -= 15
+        return K13
     def Chack_Norris(Dice):
         if Dice == 1: 
             Player_4.Levenspunten -= 15
@@ -1277,6 +1324,7 @@ class Player_4:
             Player_4.Levenspunten -= 29
         elif Dice == 6:
             Player_4.Levenspunten -= 30
+        return K18
     def The_Roch(Dice):
         if Dice == 1: 
             Player_4.Levenspunten -= 13
@@ -1290,6 +1338,7 @@ class Player_4:
             Player_4.Levenspunten -= 10
         elif Dice == 6:
             Player_4.Levenspunten -= 7
+        return K12
     def James_Bend(Dice):
         if Dice == 1 or Dice == 6:
             Player_4.Levenspunten -= 25
@@ -1299,6 +1348,7 @@ class Player_4:
             Player_4.Levenspunten -= 7
         elif Dice == 5:
             Player_4.Levenspunten -= 20
+        return K16
     def Ernold_Schwarzenegger(Dice):
         if Dice == 1 or Dice == 6:
             Player_4.Levenspunten -= 10
@@ -1308,6 +1358,7 @@ class Player_4:
             Player_4.Levenspunten -= 25
         elif Dice == 4:
             Player_4.Levenspunten -= 20
+        return K8
     def Steve_Urkel(Dice):
         if Dice == 1: 
             Player_4.Levenspunten -= 10
@@ -1321,6 +1372,7 @@ class Player_4:
             Player_4.Levenspunten -= 15
         elif Dice == 6:
             Player_4.Levenspunten -= 8
+        return K7
     def Dexter(Dice):
         if Dice == 1 or Dice == 6: 
             Player_4.Levenspunten -= 9
@@ -1332,6 +1384,7 @@ class Player_4:
             Player_4.Levenspunten -= 15
         elif Dice == 5:
             Player_4.Levenspunten -= 13
+        
     def Pariz_Hilten(Dice):
         if Dice == 1: 
             Player_4.Levenspunten -= 12
@@ -1345,6 +1398,7 @@ class Player_4:
             Player_4.Levenspunten -= 13
         elif Dice == 6:
             Player_4.Levenspunten -= 9
+        return K17
     def John_Cena(Dice):
         if Dice == 1: 
             Player_4.Levenspunten -= 10
@@ -1358,6 +1412,7 @@ class Player_4:
             Player_4.Levenspunten -= 8
         elif Dice == 6:
             Player_4.Levenspunten -= 11
+        return K1
     def Agua_Man(Dice):
         if Dice == 1: 
             Player_4.Levenspunten -= 12
@@ -1369,6 +1424,7 @@ class Player_4:
             Player_4.Levenspunten -= 7
         elif Dice == 6:
             Player_4.Levenspunten -= 13
+        return K2
     def Jackie_Chen(Dice):
         if Dice == 1: 
             Player_4.Levenspunten -= 12
@@ -1382,6 +1438,7 @@ class Player_4:
             Player_4.Levenspunten -= 10
         elif Dice == 6:
             Player_4.Levenspunten -= 25
+        return K3
     def Bruce_Hee(Dice):
         if Dice == 1: 
             Player_4.Levenspunten -= 20
@@ -1395,6 +1452,7 @@ class Player_4:
             Player_4.Levenspunten -= 8
         elif Dice == 6:
             Player_4.Levenspunten -= 26
+        return K5
 
 Player1Class = Player_1
 Player1Class.Levenspunten = 100
