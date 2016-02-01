@@ -206,17 +206,26 @@ def BoardGame(l1,l2,l3,l4,Exit,crash):
                     outcome = RollDice();
                     rolledDice = True;
                     diceDisplay = 5.0;
-        if(rolledDice):
+        if(rolledDice) and P2 == True:
             for x in range(0,outcome):
                 if l1.Name == "Pos41":
                     l1 = PlayerPosList1
                 l1 = l1.tail;
-        if l2.Name == "Pos11":
-            l2 = PlayerPosList2
-        if l3.Name == "Pos21":
-            l3 = PlayerPosList3
-        if l4.Name == "Pos31":
-            l4 = PlayerPosList4
+        elif(rolledDice) and P3 == True:
+            for x in range(0,outcome):
+                if l2.Name == "Pos11":
+                    l2 = PlayerPosList2
+                l2 = l2.tail;
+        elif(rolledDice) and P4 == True:
+            for x in range(0,outcome):
+                if l3.Name == "Pos21":
+                    l3 = PlayerPosList3
+                l3 = l3.tail;
+        elif(rolledDice) and P1 == True:
+            for x in range(0,outcome):
+                if l4.Name == "Pos31":
+                    l4 = PlayerPosList4
+                l4 = l4.tail;
         gameDisplay.fill(blue)
         CornerTile(0,0)
         Player1Glove(l1)
