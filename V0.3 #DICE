@@ -21,7 +21,6 @@ offset = 50
 board_size = 10
 pygame.display.set_caption('Survivor')
 boardgame = pygame.image.load ("TheBoard.png")
-gameDisplay = pygame.display.set_mode(size)
 Player1 = pygame.image.load("BoksHandschoen3.png")
 Player2 = pygame.image.load("BoksHandschoen.png")
 Player3 = pygame.image.load("BoksHandschoen4.png")
@@ -86,26 +85,26 @@ class Image():
 def CornerTile(x,y):
     x = (0)
     y = (0)
-    gameDisplay.blit(boardgame,(x,y))
+    screen.blit(boardgame,(x,y))
 
 def Player1Glove(l1):
     x = l1.Position_X 
     y = l1.Position_Y
-    gameDisplay.blit(Player1,(x,y))
+    screen.blit(Player1,(x,y))
 
 def Player2Glove(l2):
     x = l2.Position_X + 10
     y = l2.Position_Y
-    gameDisplay.blit(Player2,(x,y))
+    screen.blit(Player2,(x,y))
 
 def Player3Glove(l3):
     x = l3.Position_X + 20
     y = l3.Position_Y
-    gameDisplay.blit(Player3,(x,y))
+    screen.blit(Player3,(x,y))
 def Player4Glove(l4):
     x = l4.Position_X + 30
     y = l4.Position_Y
-    gameDisplay.blit(Player4,(x,y))
+    screen.blit(Player4,(x,y))
 
 #MAINMENU
 def MainMenu(crash,Exit,ManualButton, QuitButton,StartButton,event,mousex,mousey):
@@ -412,7 +411,7 @@ def BoardGame(l1,l2,l3,l4,Exit,crash):
             l3 = PlayerPosList3
         if l4.Name == "Pos31":
             l4 = PlayerPosList4
-        gameDisplay.fill(blue)
+        screen.fill(blue)
         CornerTile(0,0)
         Player1Glove(l1)
         Player2Glove(l2)
