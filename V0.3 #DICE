@@ -71,8 +71,6 @@ crashed = False
 gameExit = False
 
 
-
-
 clock = pygame.time.Clock()
 time = clock
 
@@ -1359,7 +1357,7 @@ class Player_4:
             Player_4.Levenspunten -= 15
         elif Dice == 5:
             Player_4.Levenspunten -= 13
-        
+        return K6
     def Pariz_Hilten(Dice):
         if Dice == 1: 
             Player_4.Levenspunten -= 12
