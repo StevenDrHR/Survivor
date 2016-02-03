@@ -124,8 +124,7 @@ def MainMenu(crash,Exit,ManualButton, QuitButton,StartButton,event,mousex,mousey
                 if event.key == pygame.K_ESCAPE:
                     crash = True
             if event.type == pygame.QUIT:
-                pygame.quit
-                quit()
+                crash = True
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
                 crash = True
         else:
@@ -185,8 +184,7 @@ def BoardGame(l1,l2,l3,l4,Exit,crash):
     while not Exit:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                pygame.quit
-                quit()
+                Exit = True
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     MainMenu(crash,Exit,Manualbutton, Quitbutton,Startbutton,event,mousex,mousey)
