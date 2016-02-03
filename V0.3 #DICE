@@ -21,6 +21,7 @@ offset = 50
 board_size = 10
 pygame.display.set_caption('Survivor')
 boardgame = pygame.image.load ("TheBoard.png")
+gameDisplay = pygame.display.set_mode(size)
 Player1 = pygame.image.load("BoksHandschoen3.png")
 Player2 = pygame.image.load("BoksHandschoen.png")
 Player3 = pygame.image.load("BoksHandschoen4.png")
@@ -30,24 +31,6 @@ for event in pygame.event.get():
         mousex, mousey = pygame.mouse.get_pos()
 
 #assets
-K1 = pygame.image.load("K1.png")
-K2 = pygame.image.load ("K2.png")
-K3 = pygame.image.load ("K3.png")
-K4 = pygame.image.load("K4.png")
-K5 = pygame.image.load("K5.png")
-K6 = pygame.image.load("K6.png")
-K7 = pygame.image.load("K7.png")
-K8 = pygame.image.load("K8.png")
-K9 = pygame.image.load("K9.png")
-K10 = pygame.image.load("K10.png")
-K11 = pygame.image.load("K11.png")
-K12 = pygame.image.load("K12.png")
-K13 = pygame.image.load ("K13.png")
-K14 = pygame.image.load("K14.png")
-K15 = pygame.image.load("K15.png")
-K16 = pygame.image.load("K16.png")
-K17 = pygame.image.load("K17.png")
-K18= pygame.image.load("K18.png")
 Wallpaper = pygame.image.load("WallpaperW.png")
 Quitbutton = pygame.image.load("QuitButton.png")
 Quitb = pygame.image.load("QuitButton.png")
@@ -70,6 +53,8 @@ crashed = False
 gameExit = False
 
 
+
+
 clock = pygame.time.Clock()
 time = clock
 
@@ -85,33 +70,41 @@ class Image():
 def CornerTile(x,y):
     x = (0)
     y = (0)
-    screen.blit(boardgame,(x,y))
+    gameDisplay.blit(boardgame,(x,y))
 
 def Player1Glove(l1):
     x = l1.Position_X 
     y = l1.Position_Y
-    screen.blit(Player1,(x,y))
+    if(Player1Class.Levenspunten > 90):
+        gameDisplay.blit(Player1,(x,y))
+    else:
+        Player1Class.isdead == True
 
 def Player2Glove(l2):
-    x = l2.Position_X + 10
+    x = l2.Position_X
     y = l2.Position_Y
-    screen.blit(Player2,(x,y))
+    if(Player2Class.Levenspunten > 90):
+        gameDisplay.blit(Player2,(x,y))
+
 
 def Player3Glove(l3):
-    x = l3.Position_X + 20
+    x = l3.Position_X
     y = l3.Position_Y
-    screen.blit(Player3,(x,y))
+    if(Player3Class.Levenspunten > 90):
+        gameDisplay.blit(Player3,(x,y))
+
 def Player4Glove(l4):
-    x = l4.Position_X + 30
+    x = l4.Position_X
     y = l4.Position_Y
-    screen.blit(Player4,(x,y))
+    if(Player4Class.Levenspunten > 90):
+        gameDisplay.blit(Player4,(x,y))
 
 #MAINMENU
 def MainMenu(crash,Exit,ManualButton, QuitButton,StartButton,event,mousex,mousey):
     #Music
     pygame.mixer.init()
-    pygame.mixer.music.load("SONG.mp3",)
-    pygame.mixer.music.load("SONG.mp3")
+    pygame.mixer.music.load("TitleMusic.mp3",)
+    pygame.mixer.music.load("TitleMusic.mp3")
     pygame.mixer.music.play(-1)
     crash = False
     xys = ((width * 0.5),(height * 0.10)) 
@@ -163,8 +156,6 @@ def MainMenu(crash,Exit,ManualButton, QuitButton,StartButton,event,mousex,mousey
                     
                 if event.type == MOUSEBUTTONUP and mousex > 550 and mousex < 950  and mousey > 420 and mousey < 570:
                     MainMenu2(crash,Exit,ManualButton, QuitButton,StartButton,event,mousex,mousey,Nobutton,Yesbutton)
-                    #pygame.quit()
-                    #quit()
                         
         pygame.display.update()
     clock.tick(60)
@@ -185,53 +176,85 @@ def BoardGame(l1,l2,l3,l4,Exit,crash):
     outcome = 0
     currentCardView = 0.0
     diceDisplay = 0.0
-    rolledDice = False
+    rolledDice1 = False
+    rolledDice2 = False
+    rolledDice3 = False
+    rolledDice4 = False
     pygame.display.set_caption('Survivor')
     while not Exit:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                pygame.quit
-                quit()
+                Exit = True
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
-                    Player1Class.Levenspunten = 100
-                    Player2Class.Levenspunten = 100
-                    Player3Class.Levenspunten = 100
-                    Player4Class.Levenspunten = 100
                     MainMenu(crash,Exit,Manualbutton, Quitbutton,Startbutton,event,mousex,mousey)
-                if P1 == True and event.key == pygame.K_1:
-                    outcome = RollDice()
-                    rolledDice = True
-                    diceDisplay = 5.0
+
+                if P1 == True and Player1Class.Levenspunten <= 90:
                     P1 = False
                     P2 = True
-                elif P2 == True and event.key == pygame.K_2:
+                if P1 == True and event.key == pygame.K_1 and Player1Class.Levenspunten > 90:
                     outcome = RollDice()
-                    rolledDice = True
+                    rolledDice1 = True
                     diceDisplay = 5.0
+
+                    print (event)
+
+                    print(l1.Name)
+                    P1 = False
+                    P2 = True
+
+                if P2 == True and Player2Class.Levenspunten <= 90:
                     P2 = False
                     P3 = True
-                elif P3 == True and event.key == pygame.K_3:
+                if P2 == True and event.key == pygame.K_2 and Player2Class.Levenspunten > 90:
                     outcome = RollDice()
-                    rolledDice = True
+                    rolledDice2 = True
                     diceDisplay = 5.0
+
+                    print (event)
+
+
+                    P2 = False
+                    P3 = True
+                    print(l2.Name)
+                if P3 == True and Player3Class.Levenspunten <= 90:
                     P3 = False
                     P4 = True
-                elif P4 == True and event.key == pygame.K_4:
+                if P3 == True and event.key == pygame.K_3 and Player3Class.Levenspunten > 90:
                     outcome = RollDice()
-                    rolledDice = True
+                    rolledDice3 = True
                     diceDisplay = 5.0
+
+                    print (event)
+
+
+                    P3 = False
+                    P4 = True
+                    print(l3.Name)
+                if P4 == True and Player4Class.Levenspunten <= 90:
                     P4 = False
                     P1 = True
-                # if event.key == pygame.K_9 and (0.0 >= diceDisplay):
+                if P4 == True and event.key == pygame.K_4 and Player4Class.Levenspunten > 90:
+                    outcome = RollDice()
+                    rolledDice4 = True
+                    diceDisplay = 5.0
 
-        if(rolledDice) and P2 == True:
+                    print (event)
+
+
+                    P4 = False
+                    P1 = True
+                    print(l4.Name)
+                
+
+        if(rolledDice1):
             for x in range(0,outcome):
                 if l1.Name == "Pos41":
                     l1 = PlayerPosList1
                 l1 = l1.tail
             if l1.Name == "Pos6" or l1.Name == "Pos16" or l1.Name == "Pos26" or l1.Name == "Pos36":
                     RK1 = random.randint(1,18)
+                    print(RK1)
                     if RK1 == 1:
                         currentview = Player1Class.Terry_Crews(outcome)
                     elif RK1 == 2:
@@ -270,13 +293,14 @@ def BoardGame(l1,l2,l3,l4,Exit,crash):
                         currentview = Player1Class.Bruce_Hee(outcome)
 
                     currentCardView = 4.0
-        elif(rolledDice) and P3 == True:
+        elif(rolledDice2):
             for x in range(0,outcome):
                 if l2.Name == "Pos11":
                     l2 = PlayerPosList2
                 l2 = l2.tail
             if l2.Name == "Pos6" or l2.Name == "Pos16" or l2.Name == "Pos26" or l2.Name == "Pos36":
                     RK2 = random.randint(1,18)
+                    print(RK2)
                     if RK2 == 1:
                         currentview = Player2Class.Terry_Crews(outcome)
                     elif RK2 == 2:
@@ -315,13 +339,14 @@ def BoardGame(l1,l2,l3,l4,Exit,crash):
                         currentview = Player2Class.Bruce_Hee(outcome)
 
                     currentCardView = 4.0
-        elif(rolledDice) and P4 == True:
+        elif(rolledDice3):
             for x in range(0,outcome):
                 if l3.Name == "Pos21":
                     l3 = PlayerPosList3
                 l3 = l3.tail
             if l3.Name == "Pos6" or l3.Name == "Pos16" or l3.Name == "Pos26" or l3.Name == "Pos36":
                     RK3 = random.randint(1,18)
+                    print(RK3)
                     if RK3 == 1:
                         currentview = Player3Class.Terry_Crews(outcome)
                     elif RK3 == 2:
@@ -360,13 +385,14 @@ def BoardGame(l1,l2,l3,l4,Exit,crash):
                         currentview = Player3Class.Bruce_Hee(outcome)
 
                     currentCardView = 4.0
-        elif(rolledDice) and P1 == True:
+        elif(rolledDice4):
             for x in range(0,outcome):
                 if l4.Name == "Pos31":
                     l4 = PlayerPosList4
                 l4 = l4.tail
             if l4.Name == "Pos6" or l4.Name == "Pos16" or l4.Name == "Pos26" or l4.Name == "Pos36":
                     RK4 = random.randint(1,18)
+                    print(RK4)
                     if RK4 == 1:
                         currentview = Player4Class.Terry_Crews(outcome)
                     elif RK4 == 2:
@@ -402,7 +428,8 @@ def BoardGame(l1,l2,l3,l4,Exit,crash):
                     elif RK4 == 17:
                         currentview = Player4Class.Jackie_Chen(outcome)
                     elif RK4 == 18:
-                        currentview = Player4Class.Bruce_Hee(outcome)
+                        currentview = Player1Class.Bruce_Hee(outcome)
+                        #DOLAN
 
                     currentCardView = 4.0
         if l2.Name == "Pos11":
@@ -411,45 +438,21 @@ def BoardGame(l1,l2,l3,l4,Exit,crash):
             l3 = PlayerPosList3
         if l4.Name == "Pos31":
             l4 = PlayerPosList4
-        screen.fill(blue)
+        gameDisplay.fill(blue)
         CornerTile(0,0)
         Player1Glove(l1)
         Player2Glove(l2)
         Player3Glove(l3)
         Player4Glove(l4)
         myfont = pygame.font.SysFont("comic sans MS", 20)
-        if P1 == True:
-            Player1Class.Name = "> Player 1 levenspunten:"
-            screen.blit(myfont.render(str(Player1Class.Name),1,(white)), (825, 320))
-        elif P1 == False:
-            Player1Class.Name = "Player 1 levenspunten:"
-            screen.blit(myfont.render(str(Player1Class.Name),1,(black)), (840, 320))
-        if P2 == True:
-            Player2Class.Name = "> Player 2 levenspunten:"
-            screen.blit(myfont.render(str(Player2Class.Name),1,(white)), (825, 370))
-        elif P2 == False:
-            Player2Class.Name = "Player 2 levenspunten:"
-            screen.blit(myfont.render(str(Player2Class.Name),1,(black)), (840, 370))
-        if P3 == True:
-            Player3Class.Name = "> Player 3 levenspunten:"
-            screen.blit(myfont.render(str(Player3Class.Name),1,(white)), (825, 420))
-        elif P3 == False:
-            Player3Class.Name = "Player 3 levenspunten:"
-            screen.blit(myfont.render(str(Player3Class.Name),1,(black)), (840, 420))
-        if P4 == True:
-            Player4Class.Name = "> Player 4 levenspunten:"
-            screen.blit(myfont.render(str(Player4Class.Name),1,(white)), (825, 470))
-        elif P4 == False:
-            Player4Class.Name = "Player 4 levenspunten:"
-            screen.blit(myfont.render(str(Player4Class.Name),1,(black)), (840, 470))
-        screen.blit(myfont.render(str(Player1Class.Levenspunten),1,(white)), (870, 350))
-        screen.blit(myfont.render(str(Player2Class.Levenspunten),1,(white)), (870, 400))
-        screen.blit(myfont.render(str(Player3Class.Levenspunten),1,(white)), (870, 450))
-        screen.blit(myfont.render(str(Player4Class.Levenspunten),1,(white)), (870, 500))
-        Player1Class.Levenspunten = int(Player1Class.Levenspunten)
-        Player2Class.Levenspunten = int(Player2Class.Levenspunten)
-        Player3Class.Levenspunten = int(Player3Class.Levenspunten)
-        Player4Class.Levenspunten = int(Player4Class.Levenspunten)
+        screen.blit(myfont.render(str(Player1Class.Levenspunten), 1, (white)), (870, 350))
+        screen.blit(myfont.render(str(Player2Class.Levenspunten), 1, (white)), (870, 400))
+        screen.blit(myfont.render(str(Player3Class.Levenspunten), 1, (white)), (870, 450))
+        screen.blit(myfont.render(str(Player4Class.Levenspunten), 1, (white)), (870, 500))
+        screen.blit(myfont.render(str(Player1Class.Name), 1, (white)), (840, 320))
+        screen.blit(myfont.render(str(Player2Class.Name), 1, (white)), (840, 370))
+        screen.blit(myfont.render(str(Player3Class.Name), 1, (white)), (840, 420))
+        screen.blit(myfont.render(str(Player4Class.Name), 1, (white)), (840, 470))
         ticks = pygame.time.get_ticks()
         deltaTime = (ticks - getTicksLastFrame) / 1000.0
         getTicksLastFrame = ticks
@@ -457,9 +460,28 @@ def BoardGame(l1,l2,l3,l4,Exit,crash):
             screen.blit(Dice[outcome-1],(800,100))
         if(0.0 < currentCardView):
             screen.blit(currentview,(400,100))
-        rolledDice = False
+        rolledDice1 = False
+        rolledDice2 = False
+        rolledDice3 = False
+        rolledDice4 = False
         currentCardView -= deltaTime
         diceDisplay -= deltaTime
+     
+        if Player1Class.Levenspunten <= 90 and Player2Class.Levenspunten <= 90 and Player3Class.Levenspunten <= 90:
+            winner = pygame.image.load("WinP4.png")           
+            screen.blit(winner,(250,100))
+
+        elif Player2Class.Levenspunten <= 90 and Player3Class.Levenspunten <= 90 and Player4Class.Levenspunten <= 90:
+            winner = pygame.image.load("WinP1.png")
+            screen.blit(winner,(250,100))
+
+        elif Player1Class.Levenspunten <= 90 and Player3Class.Levenspunten <= 90 and Player4Class.Levenspunten <= 90:
+            winner = pygame.image.load("WinP2.png")
+            screen.blit(winner,(250,100))
+
+        elif Player1Class.Levenspunten <= 90 and Player2Class.Levenspunten <= 90 and Player4Class.Levenspunten <= 90:
+            winner = pygame.image.load("WinP3.png")
+            screen.blit(winner,(250,100)) 
         pygame.display.update()
 
 def RollDice():
@@ -474,13 +496,16 @@ def MainMenu2(crash,Exit,ManualButton, QuitButton,StartButton,event,mousex,mouse
     xye = ((width * 0.3),(height * 0.3))
     xyy = ((width * 0.51),(height * 0.52))
     xyn = ((width * 0.32),(height * 0.52))
+
     while not crash:
         for event in pygame.event.get():
             if event.type == MOUSEMOTION:
                 mousex, mousey = pygame.mouse.get_pos()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    crash = True
             if event.type == pygame.QUIT:
-                pygame.quit
-                quit()
+                crash = True
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
                 crash = True
         else:
@@ -508,941 +533,14 @@ def MainMenu2(crash,Exit,ManualButton, QuitButton,StartButton,event,mousex,mouse
                     MainMenu(crash,Exit,ManualButton, QuitButton,StartButton,event,mousex,mousey) #no
                 if event.type == MOUSEBUTTONUP and mousex > 561 and mousex < 752  and mousey > 312 and mousey < 421:
                     pygame.quit() #yes
-                    quit()
-                    
-                        
+                    quit()    
+                       
         pygame.display.update()
     clock.tick(60)
-class Player_1:
-    def __init__(self,Name,Levenspunten):
-        self.Name = Name
-        self.Levenspunten = Levenspunten
-    def Terry_Crews(Dice):
-        if Dice == 1 or Dice == 6:
-            Player_1.Levenspunten -= 10
-        elif Dice == 2 or Dice == 5:
-            Player_1.Levenspunten -= 15
-        elif Dice == 3:
-            Player_1.Levenspunten -= 25
-        elif Dice == 4:
-            Player_1.Levenspunten -= 20
-        elif Dice == 5:
-            Player_1.Levenspunten -= 23
-        elif Dice == 6:
-            Player_1.Levenspunten -= 26
-        return K4
-    def Jason_Statham(Dice):
-        if Dice == 1: 
-            Player_1.Levenspunten -= 15
-        elif Dice == 2:
-            Player_1.Levenspunten -= 17
-        elif Dice == 3:
-            Player_1.Levenspunten -= 19
-        elif Dice == 4:
-            Player_1.Levenspunten -= 21
-        elif Dice == 5:
-            Player_1.Levenspunten -= 23
-        elif Dice == 6:
-            Player_1.Levenspunten -= 26
-        return K15
-    def Wesley_Sniper(Dice):
-        if Dice == 1:
-            Player_1.Levenspunten -= 10
-        elif Dice == 2 or Dice == 6:
-            Player_1.Levenspunten -= 12
-        elif Dice == 3 or Dice == 5:
-            Player_1.Levenspunten -= 14
-        elif Dice == 4:
-            Player_1.Levenspunten -= 16
-        return K14
-    def Jet_Ri(Dice):
-        if Dice == 1: 
-            Player_1.Levenspunten -= 10
-        elif Dice == 2:
-            Player_1.Levenspunten -= 30
-        elif Dice == 3:
-            Player_1.Levenspunten -= 12
-        elif Dice == 4:
-            Player_1.Levenspunten -= 25
-        elif Dice == 5:
-            Player_1.Levenspunten -= 14
-        elif Dice == 6:
-            Player_1.Levenspunten -= 23
-        return K11
-    def Steve_Seagal(Dice):
-        if Dice == 1: 
-            Player_1.Levenspunten -= 10
-        elif Dice == 2:
-            Player_1.Levenspunten -= 15
-        elif Dice == 3:
-            Player_1.Levenspunten -= 12
-        elif Dice == 4:
-            Player_1.Levenspunten -= 11
-        elif Dice == 5:
-            Player_1.Levenspunten -= 25
-        elif Dice == 6:
-            Player_1.Levenspunten -= 20
-        return K9
-    def Super_Merio(Dice):
-        if Dice == 1 or Dice == 2:
-            Player_1.Levenspunten -= 10
-        elif Dice == 3 or Dice == 4:
-            Player_1.Levenspunten -= 30
-        elif Dice == 5 or Dice == 6:
-            Player_1.Levenspunten -= 15
-        return K10
-    def Vin_Dieser(Dice):
-        if Dice == 1 or Dice == 5:
-            Player_1.Levenspunten -= 15
-        elif Dice == 2 or Dice == 4:
-            Player_1.Levenspunten -= 25
-        elif Dice == 3:
-            Player_1.Levenspunten -= 30
-        elif Dice == 6:
-            Player_1.Levenspunten -= 15
-        return K13
-    def Chack_Norris(Dice):
-        if Dice == 1: 
-            Player_1.Levenspunten -= 15
-        elif Dice == 2:
-            Player_1.Levenspunten -= 28
-        elif Dice == 3:
-            Player_1.Levenspunten -= 27
-        elif Dice == 4:
-            Player_1.Levenspunten -= 25
-        elif Dice == 5:
-            Player_1.Levenspunten -= 29
-        elif Dice == 6:
-            Player_1.Levenspunten -= 30
-        return K18
-    def The_Roch(Dice):
-        if Dice == 1: 
-            Player_1.Levenspunten -= 13
-        elif Dice == 2:
-            Player_1.Levenspunten -= 28
-        elif Dice == 3:
-            Player_1.Levenspunten -= 30
-        elif Dice == 4:
-            Player_1.Levenspunten -= 17
-        elif Dice == 5:
-            Player_1.Levenspunten -= 10
-        elif Dice == 6:
-            Player_1.Levenspunten -= 7
-        return K12
-    def James_Bend(Dice):
-        if Dice == 1 or Dice == 6:
-            Player_1.Levenspunten -= 25
-        elif Dice == 2 or Dice == 3:
-            Player_1.Levenspunten -= 15
-        elif Dice == 4:
-            Player_1.Levenspunten -= 7
-        elif Dice == 5:
-            Player_1.Levenspunten -= 20
-        return K16
-    def Ernold_Schwarzenegger(Dice):
-        if Dice == 1 or Dice == 6:
-            Player_1.Levenspunten -= 10
-        elif Dice == 2 or Dice == 5:
-            Player_1.Levenspunten -= 15
-        elif Dice == 3:
-            Player_1.Levenspunten -= 25
-        elif Dice == 4:
-            Player_1.Levenspunten -= 20
-        return K8
-    def Steve_Urkel(Dice):
-        if Dice == 1: 
-            Player_1.Levenspunten -= 10
-        elif Dice == 2:
-            Player_1.Levenspunten -= 5
-        elif Dice == 3:
-            Player_1.Levenspunten -= 12
-        elif Dice == 4:
-            Player_1.Levenspunten -= 11
-        elif Dice == 5:
-            Player_1.Levenspunten -= 15
-        elif Dice == 6:
-            Player_1.Levenspunten -= 8
-        return K7
-    def Dexter(Dice):
-        if Dice == 1 or Dice == 6: 
-            Player_1.Levenspunten -= 9
-        elif Dice == 2:
-            Player_1.Levenspunten -= 8
-        elif Dice == 3:
-            Player_1.Levenspunten -= 7
-        elif Dice == 4:
-            Player_1.Levenspunten -= 15
-        elif Dice == 5:
-            Player_1.Levenspunten -= 13
-        return K6
-    def Pariz_Hilten(Dice):
-        if Dice == 1: 
-            Player_1.Levenspunten -= 12
-        elif Dice == 2:
-            Player_1.Levenspunten -= 8
-        elif Dice == 3:
-            Player_1.Levenspunten -= 7
-        elif Dice == 4:
-            Player_1.Levenspunten -= 15
-        elif Dice == 5:
-            Player_1.Levenspunten -= 13
-        elif Dice == 6:
-            Player_1.Levenspunten -= 9
-        return K17
-    def John_Cena(Dice):
-        if Dice == 1: 
-            Player_1.Levenspunten -= 10
-        elif Dice == 2:
-            Player_1.Levenspunten -= 6
-        elif Dice == 3:
-            Player_1.Levenspunten -= 25
-        elif Dice == 4:
-            Player_1.Levenspunten -= 7
-        elif Dice == 5:
-            Player_1.Levenspunten -= 8
-        elif Dice == 6:
-            Player_1.Levenspunten -= 11
-        return K1
-    def Agua_Man(Dice):
-        if Dice == 1: 
-            Player_1.Levenspunten -= 12
-        elif Dice == 2:
-            Player_1.Levenspunten -= 15
-        elif Dice == 3:
-            Player_1.Levenspunten -= 9
-        elif Dice == 4 or Dice == 5:
-            Player_1.Levenspunten -= 7
-        elif Dice == 6:
-            Player_1.Levenspunten -= 13
-        return K2
-    def Jackie_Chen(Dice):
-        if Dice == 1: 
-            Player_1.Levenspunten -= 12
-        elif Dice == 2:
-            Player_1.Levenspunten -= 10
-        elif Dice == 3:
-            Player_1.Levenspunten -= 15
-        elif Dice == 4:
-            Player_1.Levenspunten -= 9
-        elif Dice == 5:
-            Player_1.Levenspunten -= 10
-        elif Dice == 6:
-            Player_1.Levenspunten -= 25
-        return K3
-    def Bruce_Hee(Dice):
-        if Dice == 1: 
-            Player_1.Levenspunten -= 20
-        elif Dice == 2:
-            Player_1.Levenspunten -= 15
-        elif Dice == 3:
-            Player_1.Levenspunten -= 5
-        elif Dice == 4:
-            Player_1.Levenspunten -= 7
-        elif Dice == 5:
-            Player_1.Levenspunten -= 8
-        elif Dice == 6:
-            Player_1.Levenspunten -= 26
-        return K5
-
-class Player_2:
-    def __init__(self,Name,Levenspunten):
-        self.Name = Name
-        self.Levenspunten = Levenspunten
-    def Terry_Crews(Dice):
-        if Dice == 1 or Dice == 6:
-            Player_2.Levenspunten -= 10
-        elif Dice == 2 or Dice == 5:
-            Player_2.Levenspunten -= 15
-        elif Dice == 3:
-            Player_2.Levenspunten -= 25
-        elif Dice == 4:
-            Player_2.Levenspunten -= 20
-        return K4
-    def Jason_Statham(Dice):
-        if Dice == 1: 
-            Player_2.Levenspunten -= 15
-        elif Dice == 2:
-            Player_2.Levenspunten -= 17
-        elif Dice == 3:
-            Player_2.Levenspunten -= 19
-        elif Dice == 4:
-            Player_2.Levenspunten -= 21
-        elif Dice == 5:
-            Player_2.Levenspunten -= 23
-        elif Dice == 6:
-            Player_2.Levenspunten -= 26
-        return K15
-    def Wesley_Sniper(Dice):
-        if Dice == 1:
-            Player_2.Levenspunten -= 10
-        elif Dice == 2 or Dice == 6:
-            Player_2.Levenspunten -= 12
-        elif Dice == 3 or Dice == 5:
-            Player_2.Levenspunten -= 14
-        elif Dice == 4:
-            Player_2.Levenspunten -= 16
-        return K14
-    def Jet_Ri(Dice):
-        if Dice == 1: 
-            Player_2.Levenspunten -= 10
-        elif Dice == 2:
-            Player_2.Levenspunten -= 30
-        elif Dice == 3:
-            Player_2.Levenspunten -= 12
-        elif Dice == 4:
-            Player_2.Levenspunten -= 25
-        elif Dice == 5:
-            Player_2.Levenspunten -= 14
-        elif Dice == 6:
-            Player_2.Levenspunten -= 23
-        return K11
-    def Steve_Seagal(Dice):
-        if Dice == 1: 
-            Player_2.Levenspunten -= 10
-        elif Dice == 2:
-            Player_2.Levenspunten -= 15
-        elif Dice == 3:
-            Player_2.Levenspunten -= 12
-        elif Dice == 4:
-            Player_2.Levenspunten -= 11
-        elif Dice == 5:
-            Player_2.Levenspunten -= 25
-        elif Dice == 6:
-            Player_2.Levenspunten -= 20
-        return K9
-    def Super_Merio(Dice):
-        if Dice == 1 or Dice == 2:
-            Player_2.Levenspunten -= 10
-        elif Dice == 3 or Dice == 4:
-            Player_2.Levenspunten -= 30
-        elif Dice == 5 or Dice == 6:
-            Player_2.Levenspunten -= 15
-        return K10
-    def Vin_Dieser(Dice):
-        if Dice == 1 or Dice == 5:
-            Player_2.Levenspunten -= 15
-        elif Dice == 2 or Dice == 4:
-            Player_2.Levenspunten -= 25
-        elif Dice == 3:
-            Player_2.Levenspunten -= 30
-        elif Dice == 6:
-            Player_2.Levenspunten -= 15
-        return K13
-    def Chack_Norris(Dice):
-        if Dice == 1: 
-            Player_2.Levenspunten -= 15
-        elif Dice == 2:
-            Player_2.Levenspunten -= 28
-        elif Dice == 3:
-            Player_2.Levenspunten -= 27
-        elif Dice == 4:
-            Player_2.Levenspunten -= 25
-        elif Dice == 5:
-            Player_2.Levenspunten -= 29
-        elif Dice == 6:
-            Player_2.Levenspunten -= 30
-        return K18
-    def The_Roch(Dice):
-        if Dice == 1: 
-            Player_2.Levenspunten -= 13
-        elif Dice == 2:
-            Player_2.Levenspunten -= 28
-        elif Dice == 3:
-            Player_2.Levenspunten -= 30
-        elif Dice == 4:
-            Player_2.Levenspunten -= 17
-        elif Dice == 5:
-            Player_2.Levenspunten -= 10
-        elif Dice == 6:
-            Player_2.Levenspunten -= 7
-        return K12
-    def James_Bend(Dice):
-        if Dice == 1 or Dice == 6:
-            Player_2.Levenspunten -= 25
-        elif Dice == 2 or Dice == 3:
-            Player_2.Levenspunten -= 15
-        elif Dice == 4:
-            Player_2.Levenspunten -= 7
-        elif Dice == 5:
-            Player_2.Levenspunten -= 20
-        return K16
-    def Ernold_Schwarzenegger(Dice):
-        if Dice == 1 or Dice == 6:
-            Player_2.Levenspunten -= 10
-        elif Dice == 2 or Dice == 5:
-            Player_2.Levenspunten -= 15
-        elif Dice == 3:
-            Player_2.Levenspunten -= 25
-        elif Dice == 4:
-            Player_2.Levenspunten -= 20
-        return K8
-    def Steve_Urkel(Dice):
-        if Dice == 1: 
-            Player_2.Levenspunten -= 10
-        elif Dice == 2:
-            Player_2.Levenspunten -= 5
-        elif Dice == 3:
-            Player_2.Levenspunten -= 12
-        elif Dice == 4:
-            Player_2.Levenspunten -= 11
-        elif Dice == 5:
-            Player_2.Levenspunten -= 15
-        elif Dice == 6:
-            Player_2.Levenspunten -= 8
-        return K7
-    def Dexter(Dice):
-        if Dice == 1 or Dice == 6: 
-            Player_2.Levenspunten -= 9
-        elif Dice == 2:
-            Player_2.Levenspunten -= 8
-        elif Dice == 3:
-            Player_2.Levenspunten -= 7
-        elif Dice == 4:
-            Player_2.Levenspunten -= 15
-        elif Dice == 5:
-            Player_2.Levenspunten -= 13
-        return K6
-    def Pariz_Hilten(Dice):
-        if Dice == 1: 
-            Player_2.Levenspunten -= 12
-        elif Dice == 2:
-            Player_2.Levenspunten -= 8
-        elif Dice == 3:
-            Player_2.Levenspunten -= 7
-        elif Dice == 4:
-            Player_2.Levenspunten -= 15
-        elif Dice == 5:
-            Player_2.Levenspunten -= 13
-        elif Dice == 6:
-            Player_2.Levenspunten -= 9
-        return K17
-    def John_Cena(Dice):
-        if Dice == 1: 
-            Player_2.Levenspunten -= 10
-        elif Dice == 2:
-            Player_2.Levenspunten -= 6
-        elif Dice == 3:
-            Player_2.Levenspunten -= 25
-        elif Dice == 4:
-            Player_2.Levenspunten -= 7
-        elif Dice == 5:
-            Player_2.Levenspunten -= 8
-        elif Dice == 6:
-            Player_2.Levenspunten -= 11
-        return K1
-    def Agua_Man(Dice):
-        if Dice == 1: 
-            Player_2.Levenspunten -= 12
-        elif Dice == 2:
-            Player_2.Levenspunten -= 15
-        elif Dice == 3:
-            Player_2.Levenspunten -= 9
-        elif Dice == 4 or Dice == 5:
-            Player_2.Levenspunten -= 7
-        elif Dice == 6:
-            Player_2.Levenspunten -= 13
-        return K2
-    def Jackie_Chen(Dice):
-        if Dice == 1: 
-            Player_2.Levenspunten -= 12
-        elif Dice == 2:
-            Player_2.Levenspunten -= 10
-        elif Dice == 3:
-            Player_2.Levenspunten -= 15
-        elif Dice == 4:
-            Player_2.Levenspunten -= 9
-        elif Dice == 5:
-            Player_2.Levenspunten -= 10
-        elif Dice == 6:
-            Player_2.Levenspunten -= 25
-        return K3
-    def Bruce_Hee(Dice):
-        if Dice == 1: 
-            Player_2.Levenspunten -= 20
-        elif Dice == 2:
-            Player_2.Levenspunten -= 15
-        elif Dice == 3:
-            Player_2.Levenspunten -= 5
-        elif Dice == 4:
-            Player_2.Levenspunten -= 7
-        elif Dice == 5:
-            Player_2.Levenspunten -= 8
-        elif Dice == 6:
-            Player_2.Levenspunten -= 26
-        return K5
 
 
-class Player_3:
-    def __init__(self,Name,Levenspunten):
-        self.Name = Name
-        self.Levenspunten = Levenspunten
-    def Terry_Crews(Dice):
-        if Dice == 1 or Dice == 6:
-            Player_3.Levenspunten -= 10
-        elif Dice == 2 or Dice == 5:
-            Player_3.Levenspunten -= 15
-        elif Dice == 3:
-            Player_3.Levenspunten -= 25
-        elif Dice == 4:
-            Player_3.Levenspunten -= 20
-        return K4
-    def Jason_Statham(Dice):
-        if Dice == 1: 
-            Player_3.Levenspunten -= 15
-        elif Dice == 2:
-            Player_3.Levenspunten -= 17
-        elif Dice == 3:
-            Player_3.Levenspunten -= 19
-        elif Dice == 4:
-            Player_3.Levenspunten -= 21
-        elif Dice == 5:
-            Player_3.Levenspunten -= 23
-        elif Dice == 6:
-            Player_3.Levenspunten -= 26
-        return K15
-    def Wesley_Sniper(Dice):
-        if Dice == 1:
-            Player_3.Levenspunten -= 10
-        elif Dice == 2 or Dice == 6:
-            Player_3.Levenspunten -= 12
-        elif Dice == 3 or Dice == 5:
-            Player_3.Levenspunten -= 14
-        elif Dice == 4:
-            Player_3.Levenspunten -= 16
-        return K14
-    def Jet_Ri(Dice):
-        if Dice == 1: 
-            Player_3.Levenspunten -= 10
-        elif Dice == 2:
-            Player_3.Levenspunten -= 30
-        elif Dice == 3:
-            Player_3.Levenspunten -= 12
-        elif Dice == 4:
-            Player_3.Levenspunten -= 25
-        elif Dice == 5:
-            Player_3.Levenspunten -= 14
-        elif Dice == 6:
-            Player_3.Levenspunten -= 23
-        return K11
-    def Steve_Seagal(Dice):
-        if Dice == 1: 
-            Player_3.Levenspunten -= 10
-        elif Dice == 2:
-            Player_3.Levenspunten -= 15
-        elif Dice == 3:
-            Player_3.Levenspunten -= 12
-        elif Dice == 4:
-            Player_3.Levenspunten -= 11
-        elif Dice == 5:
-            Player_3.Levenspunten -= 25
-        elif Dice == 6:
-            Player_3.Levenspunten -= 20
-        return K9
-    def Super_Merio(Dice):
-        if Dice == 1 or Dice == 2:
-            Player_3.Levenspunten -= 10
-        elif Dice == 3 or Dice == 4:
-            Player_3.Levenspunten -= 30
-        elif Dice == 5 or Dice == 6:
-            Player_3.Levenspunten -= 15
-        return K10
-    def Vin_Dieser(Dice):
-        if Dice == 1 or Dice == 5:
-            Player_3.Levenspunten -= 15
-        elif Dice == 2 or Dice == 4:
-            Player_3.Levenspunten -= 25
-        elif Dice == 3:
-            Player_3.Levenspunten -= 30
-        elif Dice == 6:
-            Player_3.Levenspunten -= 15
-        return K13
-    def Chack_Norris(Dice):
-        if Dice == 1: 
-            Player_3.Levenspunten -= 15
-        elif Dice == 2:
-            Player_3.Levenspunten -= 28
-        elif Dice == 3:
-            Player_3.Levenspunten -= 27
-        elif Dice == 4:
-            Player_3.Levenspunten -= 25
-        elif Dice == 5:
-            Player_3.Levenspunten -= 29
-        elif Dice == 6:
-            Player_3.Levenspunten -= 30
-        return K18
-    def The_Roch(Dice):
-        if Dice == 1: 
-            Player_3.Levenspunten -= 13
-        elif Dice == 2:
-            Player_3.Levenspunten -= 28
-        elif Dice == 3:
-            Player_3.Levenspunten -= 30
-        elif Dice == 4:
-            Player_3.Levenspunten -= 17
-        elif Dice == 5:
-            Player_3.Levenspunten -= 10
-        elif Dice == 6:
-            Player_3.Levenspunten -= 7
-        return K12
-    def James_Bend(Dice):
-        if Dice == 1 or Dice == 6:
-            Player_3.Levenspunten -= 25
-        elif Dice == 2 or Dice == 3:
-            Player_3.Levenspunten -= 15
-        elif Dice == 4:
-            Player_3.Levenspunten -= 7
-        elif Dice == 5:
-            Player_3.Levenspunten -= 20
-        return K16
-    def Ernold_Schwarzenegger(Dice):
-        if Dice == 1 or Dice == 6:
-            Player_3.Levenspunten -= 10
-        elif Dice == 2 or Dice == 5:
-            Player_3.Levenspunten -= 15
-        elif Dice == 3:
-            Player_3.Levenspunten -= 25
-        elif Dice == 4:
-            Player_3.Levenspunten -= 20
-        return K8
-    def Steve_Urkel(Dice):
-        if Dice == 1: 
-            Player_3.Levenspunten -= 10
-        elif Dice == 2:
-            Player_3.Levenspunten -= 5
-        elif Dice == 3:
-            Player_3.Levenspunten -= 12
-        elif Dice == 4:
-            Player_3.Levenspunten -= 11
-        elif Dice == 5:
-            Player_3.Levenspunten -= 15
-        elif Dice == 6:
-            Player_3.Levenspunten -= 8
-        return K7
-    def Dexter(Dice):
-        if Dice == 1 or Dice == 6: 
-            Player_3.Levenspunten -= 9
-        elif Dice == 2:
-            Player_3.Levenspunten -= 8
-        elif Dice == 3:
-            Player_3.Levenspunten -= 7
-        elif Dice == 4:
-            Player_3.Levenspunten -= 15
-        elif Dice == 5:
-            Player_3.Levenspunten -= 13
-        return K6
-    def Pariz_Hilten(Dice):
-        if Dice == 1: 
-            Player_3.Levenspunten -= 12
-        elif Dice == 2:
-            Player_3.Levenspunten -= 8
-        elif Dice == 3:
-            Player_3.Levenspunten -= 7
-        elif Dice == 4:
-            Player_3.Levenspunten -= 15
-        elif Dice == 5:
-            Player_3.Levenspunten -= 13
-        elif Dice == 6:
-            Player_3.Levenspunten -= 9
-        return K17
-    def John_Cena(Dice):
-        if Dice == 1: 
-            Player_3.Levenspunten -= 10
-        elif Dice == 2:
-            Player_3.Levenspunten -= 6
-        elif Dice == 3:
-            Player_3.Levenspunten -= 25
-        elif Dice == 4:
-            Player_3.Levenspunten -= 7
-        elif Dice == 5:
-            Player_3.Levenspunten -= 8
-        elif Dice == 6:
-            Player_3.Levenspunten -= 11
-        return K1
-    def Agua_Man(Dice):
-        if Dice == 1: 
-            Player_3.Levenspunten -= 12
-        elif Dice == 2:
-            Player_3.Levenspunten -= 15
-        elif Dice == 3:
-            Player_3.Levenspunten -= 9
-        elif Dice == 4 or Dice == 5:
-            Player_3.Levenspunten -= 7
-        elif Dice == 6:
-            Player_3.Levenspunten -= 13
-        return K2
-    def Jackie_Chen(Dice):
-        if Dice == 1: 
-            Player_3.Levenspunten -= 12
-        elif Dice == 2:
-            Player_3.Levenspunten -= 10
-        elif Dice == 3:
-            Player_3.Levenspunten -= 15
-        elif Dice == 4:
-            Player_3.Levenspunten -= 9
-        elif Dice == 5:
-            Player_3.Levenspunten -= 10
-        elif Dice == 6:
-            Player_3.Levenspunten -= 25
-        return K3
-    def Bruce_Hee(Dice):
-        if Dice == 1: 
-            Player_3.Levenspunten -= 20
-        elif Dice == 2:
-            Player_3.Levenspunten -= 15
-        elif Dice == 3:
-            Player_3.Levenspunten -= 5
-        elif Dice == 4:
-            Player_3.Levenspunten -= 7
-        elif Dice == 5:
-            Player_3.Levenspunten -= 8
-        elif Dice == 6:
-            Player_3.Levenspunten -= 26
-        return K5
-       
 
-class Player_4:
-    def __init__(self,Name,Levenspunten):
-        self.Name = Name
-        self.Levenspunten = Levenspunten
-    def Terry_Crews(Dice):
-        if Dice == 1 or Dice == 6:
-            Player_4.Levenspunten -= 10
-        elif Dice == 2 or Dice == 5:
-            Player_.Levenspunten -= 15
-        elif Dice == 3:
-            Player_4.Levenspunten -= 25
-        elif Dice == 4:
-            Player_4.Levenspunten -= 20
-        return K4
-    def Jason_Statham(Dice):
-        if Dice == 1: 
-            Player_4.Levenspunten -= 15
-        elif Dice == 2:
-            Player_4.Levenspunten -= 17
-        elif Dice == 3:
-            Player_4.Levenspunten -= 19
-        elif Dice == 4:
-            Player_4.Levenspunten -= 21
-        elif Dice == 5:
-            Player_4.Levenspunten -= 23
-        elif Dice == 6:
-            Player_4.Levenspunten -= 26
-        return K15
-    def Wesley_Sniper(Dice):
-        if Dice == 1:
-            Player_4.Levenspunten -= 10
-        elif Dice == 2 or Dice == 6:
-            Player_4.Levenspunten -= 12
-        elif Dice == 3 or Dice == 5:
-            Player_4.Levenspunten -= 14
-        elif Dice == 4:
-            Player_4.Levenspunten -= 16
-        return K11
-    def Jet_Ri(Dice):
-        if Dice == 1: 
-            Player_4.Levenspunten -= 10
-        elif Dice == 2:
-            Player_4.Levenspunten -= 30
-        elif Dice == 3:
-            Player_4.Levenspunten -= 12
-        elif Dice == 4:
-            Player_4.Levenspunten -= 25
-        elif Dice == 5:
-            Player_4.Levenspunten -= 14
-        elif Dice == 6:
-            Player_4.Levenspunten -= 23
-    def Steve_Seagal(Dice):
-        if Dice == 1: 
-            Player_4.Levenspunten -= 10
-        elif Dice == 2:
-            Player_4.Levenspunten -= 15
-        elif Dice == 3:
-            Player_4.Levenspunten -= 12
-        elif Dice == 4:
-            Player_4.Levenspunten -= 11
-        elif Dice == 5:
-            Player_4.Levenspunten -= 25
-        elif Dice == 6:
-            Player_4.Levenspunten -= 20
-        return K9
-    def Super_Merio(Dice):
-        if Dice == 1 or Dice == 2:
-            Player_4.Levenspunten -= 10
-        elif Dice == 3 or Dice == 4:
-            Player_4.Levenspunten -= 30
-        elif Dice == 5 or Dice == 6:
-            Player_4.Levenspunten -= 15
-        return K10
-    def Vin_Dieser(Dice):
-        if Dice == 1 or Dice == 5:
-            Player_4.Levenspunten -= 15
-        elif Dice == 2 or Dice == 4:
-            Player_4.Levenspunten -= 25
-        elif Dice == 3:
-            Player_4.Levenspunten -= 30
-        elif Dice == 6:
-            Player_4.Levenspunten -= 15
-        return K13
-    def Chack_Norris(Dice):
-        if Dice == 1: 
-            Player_4.Levenspunten -= 15
-        elif Dice == 2:
-            Player_4.Levenspunten -= 28
-        elif Dice == 3:
-            Player_4.Levenspunten -= 27
-        elif Dice == 4:
-            Player_4.Levenspunten -= 25
-        elif Dice == 5:
-            Player_4.Levenspunten -= 29
-        elif Dice == 6:
-            Player_4.Levenspunten -= 30
-        return K18
-    def The_Roch(Dice):
-        if Dice == 1: 
-            Player_4.Levenspunten -= 13
-        elif Dice == 2:
-            Player_4.Levenspunten -= 28
-        elif Dice == 3:
-            Player_4.Levenspunten -= 30
-        elif Dice == 4:
-            Player_4.Levenspunten -= 17
-        elif Dice == 5:
-            Player_4.Levenspunten -= 10
-        elif Dice == 6:
-            Player_4.Levenspunten -= 7
-        return K12
-    def James_Bend(Dice):
-        if Dice == 1 or Dice == 6:
-            Player_4.Levenspunten -= 25
-        elif Dice == 2 or Dice == 3:
-            Player_4.Levenspunten -= 15
-        elif Dice == 4:
-            Player_4.Levenspunten -= 7
-        elif Dice == 5:
-            Player_4.Levenspunten -= 20
-        return K16
-    def Ernold_Schwarzenegger(Dice):
-        if Dice == 1 or Dice == 6:
-            Player_4.Levenspunten -= 10
-        elif Dice == 2 or Dice == 5:
-            Player_4.Levenspunten -= 15
-        elif Dice == 3:
-            Player_4.Levenspunten -= 25
-        elif Dice == 4:
-            Player_4.Levenspunten -= 20
-        return K8
-    def Steve_Urkel(Dice):
-        if Dice == 1: 
-            Player_4.Levenspunten -= 10
-        elif Dice == 2:
-            Player_4.Levenspunten -= 5
-        elif Dice == 3:
-            Player_4.Levenspunten -= 12
-        elif Dice == 4:
-            Player_4.Levenspunten -= 11
-        elif Dice == 5:
-            Player_4.Levenspunten -= 15
-        elif Dice == 6:
-            Player_4.Levenspunten -= 8
-        return K7
-    def Dexter(Dice):
-        if Dice == 1 or Dice == 6: 
-            Player_4.Levenspunten -= 9
-        elif Dice == 2:
-            Player_4.Levenspunten -= 8
-        elif Dice == 3:
-            Player_4.Levenspunten -= 7
-        elif Dice == 4:
-            Player_4.Levenspunten -= 15
-        elif Dice == 5:
-            Player_4.Levenspunten -= 13
-        return K6
-    def Pariz_Hilten(Dice):
-        if Dice == 1: 
-            Player_4.Levenspunten -= 12
-        elif Dice == 2:
-            Player_4.Levenspunten -= 8
-        elif Dice == 3:
-            Player_4.Levenspunten -= 7
-        elif Dice == 4:
-            Player_4.Levenspunten -= 15
-        elif Dice == 5:
-            Player_4.Levenspunten -= 13
-        elif Dice == 6:
-            Player_4.Levenspunten -= 9
-        return K17
-    def John_Cena(Dice):
-        if Dice == 1: 
-            Player_4.Levenspunten -= 10
-        elif Dice == 2:
-            Player_4.Levenspunten -= 6
-        elif Dice == 3:
-            Player_4.Levenspunten -= 25
-        elif Dice == 4:
-            Player_4.Levenspunten -= 7
-        elif Dice == 5:
-            Player_4.Levenspunten -= 8
-        elif Dice == 6:
-            Player_4.Levenspunten -= 11
-        return K1
-    def Agua_Man(Dice):
-        if Dice == 1: 
-            Player_4.Levenspunten -= 12
-        elif Dice == 2:
-            Player_4.Levenspunten -= 15
-        elif Dice == 3:
-            Player_4.Levenspunten -= 9
-        elif Dice == 4 or Dice == 5:
-            Player_4.Levenspunten -= 7
-        elif Dice == 6:
-            Player_4.Levenspunten -= 13
-        return K2
-    def Jackie_Chen(Dice):
-        if Dice == 1: 
-            Player_4.Levenspunten -= 12
-        elif Dice == 2:
-            Player_4.Levenspunten -= 10
-        elif Dice == 3:
-            Player_4.Levenspunten -= 15
-        elif Dice == 4:
-            Player_4.Levenspunten -= 9
-        elif Dice == 5:
-            Player_4.Levenspunten -= 10
-        elif Dice == 6:
-            Player_4.Levenspunten -= 25
-        return K3
-    def Bruce_Hee(Dice):
-        if Dice == 1: 
-            Player_4.Levenspunten -= 20
-        elif Dice == 2:
-            Player_4.Levenspunten -= 15
-        elif Dice == 3:
-            Player_4.Levenspunten -= 5
-        elif Dice == 4:
-            Player_4.Levenspunten -= 7
-        elif Dice == 5:
-            Player_4.Levenspunten -= 8
-        elif Dice == 6:
-            Player_4.Levenspunten -= 26
-        return K5
-
-Player1Class = Player_1
-Player1Class.Levenspunten = 100
-Player1Class.Name = "Player 1 levenspunten:"
-
-Player2Class = Player_2
-Player2Class.Levenspunten = 100
-Player2Class.Name = "Player 2 levenspunten:"
-
-Player3Class = Player_3
-Player3Class.Levenspunten = 100
-Player3Class.Name = "Player 3 levenspunten:"
-
-Player4Class = Player_4
-Player4Class.Levenspunten = 100
-Player4Class.Name = "Player 4 levenspunten:"
-
-# Aanroepencode
+# Aanroepcode
 MainMenu(crashed,gameExit,Manualbutton, Quitbutton,Startbutton,event,mousex,mousey)
 pygame.quit()
 quit()
